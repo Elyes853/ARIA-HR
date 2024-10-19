@@ -28,8 +28,8 @@ spring:
 
   mail:
     host: smtp.gmail.com #email-smtp.eu-west-3.amazonaws.com
-    username: ${SMTP_USERNAME} #itpeac2018@gmail.com
-    password: ${SMTP_PWD} #itpeac$2018
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PWD}
     port: 465
     properties:
       mail:
@@ -73,4 +73,4 @@ chatgpt:
   model: gpt-4o
   api:
     url: https://api.openai.com/v1/chat/completions
-    key: sk-proj-lrVllXMOXrVHVOQ3YTkKT3BlbkFJx6Y8loXlVgooKfiCr3gC
+    key: ${CHATGPT_KEY}
