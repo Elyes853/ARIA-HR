@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+        "target": "http://172.18.128.1:9018/ariarh-middleoffice",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": { "^/api" : "" }
+    }
+}

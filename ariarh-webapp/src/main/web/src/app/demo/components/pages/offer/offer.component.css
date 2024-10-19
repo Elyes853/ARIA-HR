@@ -1,0 +1,5 @@
+.description {
+    max-height: 100px; /* Adjust this value according to your needs */
+    overflow: auto;
+}
+

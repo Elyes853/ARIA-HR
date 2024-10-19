@@ -1,0 +1,35 @@
+<div class="card" >
+<div class="py-4">
+
+    <p-toast></p-toast>
+
+        <h5>Nature du test </h5>
+
+        <input id="nature" type="text" pInputText [(ngModel)]="test.nature" />
+</div>
+
+    <h5>Sélectionner les questions à poser </h5>
+<p-accordion [multiple]="true">
+    <p-accordionTab *ngFor="let category of categoriesAnsQuestionsList" [header]="category.label">
+
+            <div class="flex flex-column gap-2">
+                <div  *ngFor="let question of category.questionList" class="field-checkbox">
+                    <p-checkbox
+                        class="px-3"
+                         [(ngModel)]="selectedQuestions"
+                        name="group"
+                        [value]="question">
+                    </p-checkbox>
+                    <div [innerHTML]="question.question"></div>
+                </div>
+            </div>
+    </p-accordionTab>
+</p-accordion>
+
+<div class="py-3" *ngFor="let selectedQuestion of selectedQuestions; let i = index">
+    <span>Question {{i + 1}}:</span> <span [innerHTML]="selectedQuestion.question"></span>
+</div>
+    <div class="py-5">
+    <p-button  label="Ajouter Test" (onClick)="addTest()"></p-button>
+</div>
+</div>

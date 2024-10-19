@@ -1,0 +1,39 @@
+<h1 class="upload-title">Téléverser votre CV</h1>
+
+<div class="card-container">
+    <div class="offer-details">
+        <h2>Détails de l'offre</h2>
+        <div class="offer-info">
+            <p><strong>Titre de l'offre:</strong> {{ offer.title }}</p>
+            <p><strong>Description de l'offre:</strong> </p>
+            <div style="margin-bottom: 10px;" [innerHTML]="offer.description"> </div>
+            <p><strong>Responsabilités:</strong> </p>
+            <div style="margin-bottom: 10px;" [innerHTML]="offer.responsibilities"> </div>
+            <p><strong>Compétences requises: </strong> </p>
+            <div style="margin-bottom: 10px;" [innerHTML]="offer.requiredSkills"> </div>            <p><strong>Expérience requise:</strong> {{ offer.experienceRequired }}</p>
+            <p><strong>Éducation requise:</strong> {{ offer.education }}</p>
+            <p><strong>Localisation:</strong> {{ offer.location }}</p>
+            <p><strong>Type de contrat:</strong> {{ offer.contractType }}</p>
+            <p><strong>Avantages:</strong> {{ offer.benefits }}</p>
+            <p><strong>Processus de candidature:</strong> {{ offer.applicationProcess }}</p>
+            <p><strong>Date limite de candidature:</strong> {{ offer.applicationDeadline }}</p>
+        </div>
+    </div>
+
+    <!-- File upload component -->
+
+    <p-toast [life]="20000"></p-toast>
+
+    <div class="file-upload" *ngIf="!uploaded">
+        <h2>Téléverser votre fichier</h2>
+
+        <p-fileUpload name="demo[]"  [customUpload]="true" (uploadHandler)="uploadFile($event)" [multiple]="false" accept="image/*, application/pdf" [maxFileSize]="5242870">
+            <ng-template pTemplate="content">
+                <ul>
+                    <li *ngIf="file">{{ file.name }} - {{ file.size }} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+    </div>
+
+</div>

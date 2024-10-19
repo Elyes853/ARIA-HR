@@ -1,0 +1,28 @@
+<div class="card">
+    <h1>Fiche du Candidat</h1>
+
+    <h3>Nom</h3>
+    <p>{{candidate.name}}</p>
+
+    <h3>Email</h3>
+    <p>{{candidate.email}}</p>
+
+    <h3>Numéro Téléphone</h3>
+    <p>{{candidate.phone}}</p>
+
+    <h3>Résumé CV</h3>
+    <markdown [data]="candidate.resume"></markdown>
+
+    <h3>CV</h3>
+    <button pButton type="button" label="Voir CV" class="p-button" (click)="showCV()"></button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button pButton type="button" label="Voir Conversation" class="p-button" (click)="showConversation()"></button>
+
+
+
+
+</div>
+

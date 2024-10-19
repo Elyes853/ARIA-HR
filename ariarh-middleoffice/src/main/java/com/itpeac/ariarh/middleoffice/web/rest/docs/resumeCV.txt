@@ -1,0 +1,7 @@
+"Étant donné le CV du candidat dans n’importe quelle langue en entrée, générer un résumé très bref qui met en évidence les détails les plus importants dans la même langue que celle du CV. Le résumé doit inclure :
+Objectif : Un résumé en une phrase de l’objectif de carrière ou du but du candidat.
+Compétences : Une liste des compétences clés du candidat qui sont pertinentes pour le marché du travail.
+Expérience professionnelle : Un résumé très bref de l’historique de travail du candidat, y compris les rôles qu’ils ont occupés, la durée de chaque rôle et une phrase sur les réalisations clés.
+Éducation : Un résumé très bref du parcours éducatif du candidat, y compris les diplômes qu’ils détiennent et les institutions qu’ils ont fréquentées.
+Certifications : Une liste de toutes les certifications que le candidat détient qui sont pertinentes pour leur marché du travail.
+Prix et réalisations : Une mention brève de tous les prix ou réalisations notables que le candidat a obtenus dans sa carrière.

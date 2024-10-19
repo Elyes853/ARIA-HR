@@ -1,0 +1,59 @@
+logging:
+  config: classpath:logback.xml
+
+spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration/db/postgres
+    schemas: admin
+    baseline-on-migrate: true
+    url: jdbc:postgresql://localhost:5432/ariarh
+    user: postgres
+    password: postgres
+
+  application:
+    name: #project.name#
+
+  mail:
+    host: smtp.gmail.com
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PWD}
+    port: 465
+    properties:
+      mail:
+        debug: true
+        smtp:
+          quitwait: false
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+          auth: true
+        starttls:
+          enable: false
+        ssl:
+          trust: true
+
+datasources:
+  ariarh:
+    jdbcUrl: jdbc:postgresql://localhost:5432/ariarh
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+application:
+  projet:
+    environnement: development
+  data-in-directory: ${user.home}/ariarh/data/in
+
+  email:
+    from: elyes.hmouda1@gmail.com
+    sender: ARIARH [DEV]
+  token:
+    validity: 32400000
+
+server:
+  http2:
+    enabled: true
+  port: 9018
+  servlet:
+    context-path: /ariarh-middleoffice/

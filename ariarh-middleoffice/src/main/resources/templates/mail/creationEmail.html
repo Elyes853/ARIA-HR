@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	 <meta charset="UTF-8">
+        <title>[[${header}]]</title>
+    </head>
+<body>
+		<p>
+            Cher(e) [[${user.prenom}]] [[${user.nom}]], 
+        </p>
+        <p>
+            Nous vous informons que votre accès à Sport4all a été créé.
+        </p>
+         <p>
+           Votre mot de passe est : [[${user.password}]]
+        </p>
+        <p>
+        	Vous devrez le changer à votre première connexion
+        </p>
+        <p>
+        	Veuillez contacter votre administrateur si vous avez des questions
+        </p>
+        <p>
+            <span>Cordialement, </span>
+            <br/>
+        </p>
+		<div th:replace="mail/_footer"></div>
+    </body>
+</body>
+</html>

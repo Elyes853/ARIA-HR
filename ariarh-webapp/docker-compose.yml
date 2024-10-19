@@ -1,0 +1,21 @@
+version: '2.24.6' # specify docker-compose version
+
+# define the services/containers to be run
+services:
+    angular-service:
+        container_name: angular-container-aria3
+        build: ./
+        volumes:
+            -   './:/usr/src/app'
+        ports:
+            -   "4201:4200"
+        command: >
+            bash -c "npm start"
+    docker-nginx:
+        container_name: docker-nginx
+        build: ./
+        ports:
+            -   "80:80"
+        command: ["nginx" , "-g" , "daemon off;"]
+        links:
+            -   angular-service

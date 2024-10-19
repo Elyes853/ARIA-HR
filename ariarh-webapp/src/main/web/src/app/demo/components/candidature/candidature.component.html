@@ -1,0 +1,66 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <p-table #dt [value]="offersList" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['offer.title','offer.description']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedOffers" selectionMode="multiple" [rowHover]="true" dataKey="id"  [resizableColumns]="true" [autoLayout]="true">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">Les candidatures disponibles</h5>
+                        <span class="block mt-2 md:mt-0 p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..."  class="w-full sm:w-auto"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th></th>
+                        <th pSortableColumn="title">Offre <p-sortIcon field="title"></p-sortIcon></th>
+                        <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                        <th pSortableColumn="responsibilities">Responsabilités <p-sortIcon field="responsibilities"></p-sortIcon></th>
+                        <th pSortableColumn="requiredSkills">Compétences requises <p-sortIcon field="requiredSkills"></p-sortIcon></th>
+                        <th pSortableColumn="experienceRequired">Expérience requise <p-sortIcon field="experienceRequired"></p-sortIcon></th>
+                        <th pSortableColumn="education">Éducation <p-sortIcon field="education"></p-sortIcon></th>
+                        <th pSortableColumn="location">Emplacement <p-sortIcon field="location"></p-sortIcon></th>
+                        <th pSortableColumn="contractType">Type de contrat <p-sortIcon field="contractType"></p-sortIcon></th>
+                        <th pSortableColumn="benefits">Avantages <p-sortIcon field="benefits"></p-sortIcon></th>
+                        <th pSortableColumn="applicationProcess">Processus de candidature <p-sortIcon field="applicationProcess"></p-sortIcon></th>
+                        <th pSortableColumn="applicationDeadline">Date limite de candidature <p-sortIcon field="applicationDeadline"></p-sortIcon></th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-offer>
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-info" (click)="viewOffer(offer)"></button>
+                            </div>
+                        </td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.title}}</td>
+                        <td style="width:70%; min-width:10rem;">
+                            <span class="p-column-title">Name</span>
+                            <div class="description p-ellipsis" style="width: 100%;" [innerHTML]="offer.description"  >{{offer.description}}</div>
+                        </td>
+                        <td style="width:70%; min-width:10rem;">
+                            <span class="p-column-title">Name</span>
+                            <div class="description p-ellipsis" style="width: 100%;" [innerHTML]="offer.responsibilities"  >{{offer.responsibilities}}</div>
+                        </td>
+                        <td style="width:70%; min-width:10rem;">
+                            <span class="p-column-title">Name</span>
+                            <div class="description p-ellipsis" style="width: 100%;" [innerHTML]="offer.requiredSkills"  >{{offer.requiredSkills}}</div>
+                        </td>
+
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.experienceRequired}}</td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.education}}</td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.location}}</td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.contractType}}</td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.benefits}}</td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.applicationProcess}}</td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{offer.applicationDeadline}}</td>
+
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: black;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: 1.2em;
+  margin-bottom: 2em;
+}
+
+p-button {
+  font-size: 1.2em;
+}

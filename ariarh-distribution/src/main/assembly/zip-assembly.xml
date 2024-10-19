@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+	<id>beanstalk-app-zip</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<moduleSets>
+		 <moduleSet>
+			<useAllReactorProjects>true</useAllReactorProjects>
+			<includes>
+				<include>com.itpeac.ariarh:ariarh-webapp-15</include>
+			</includes>
+			<binaries>
+				<fileMode>0555</fileMode>
+				<outputDirectory>/</outputDirectory>
+				<includeDependencies>false</includeDependencies>
+				<unpack>false</unpack>
+				<outputFileNameMapping>ROOT.war</outputFileNameMapping>
+			</binaries>
+		</moduleSet>
+		<moduleSet>
+			<useAllReactorProjects>true</useAllReactorProjects>
+			<includes>
+				<include>com.itpeac.ariarh:ariarh-middleoffice</include>
+			</includes>
+			<binaries>
+				<fileMode>0555</fileMode>
+				<outputDirectory>/</outputDirectory>
+				<includeDependencies>false</includeDependencies>
+				<unpack>false</unpack>
+				<outputFileNameMapping>ariarh-middleoffice.war</outputFileNameMapping>
+			</binaries>
+		</moduleSet>
+
+	</moduleSets>
+	<fileSets>
+		<fileSet>
+			<directory>src/ebextensions/</directory>
+			<outputDirectory>.ebextensions</outputDirectory>
+			<includes>
+				<include>tomcat-settings.config</include>
+				<include>infrastructure.config</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>

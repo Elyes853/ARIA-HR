@@ -1,0 +1,3 @@
+ALTER TABLE candidates
+ADD COLUMN score TEXT,
+ADD COLUMN resume TEXT;

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>utf-8</charset>
+			<Pattern>%green(%d{yyyy-MM-dd HH:mm:ss.SSS}) ; %mdc{user:-SYSTEM};%mdc{@ip:-@ip} ; %highlight(%-5level) ; %mdc{action};%mdc{codeclient};%mdc{region};%mdc{portfeuille};%msg %n %throwable</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="RollingFile"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_DIRECTORY}/ariarh.log</file>
+		<encoder
+				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%green(%d{yyyy-MM-dd HH:mm:ss.SSS}) ; %mdc{user:-SYSTEM};%mdc{@ip:-@ip} ; %highlight(%-5level) ; %mdc{action};%mdc{codeclient};%mdc{region};%mdc{portfeuille};%msg %n %throwable</Pattern>
+		</encoder>
+
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_DIRECTORY}/ariarh-%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+					class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<logger name="com.itpeac.ariarh.middleoffice" level="INFO,ERROR" />
+
+	<logger name="javax.activation" level="DEBUG" />
+	<logger name="javax.xml.bind" level="DEBUG" />
+	<logger name="ch.qos.logback" level="DEBUG" />
+	<logger name="com.sun.xml.internal.bind" level="DEBUG" />
+	<logger name="org.apache" level="DEBUG" />
+	<logger name="org.apache.catalina.startup.DigesterFactory" level="OFF" />
+	<logger name="org.bson" level="DEBUG" />
+	<logger name="org.hibernate.validator" level="DEBUG" />
+	<logger name="org.hibernate" level="DEBUG" />
+	<logger name="org.hibernate.ejb.HibernatePersistence" level="OFF" />
+	<logger name="org.springframework" level="DEBUG" />
+	<logger name="org.springframework.web" level="DEBUG" />
+	<logger name="org.springframework.security" level="DEBUG" />
+	<logger name="org.springframework.cache" level="DEBUG" />
+	<logger name="springfox" level="DEBUG" />
+	<logger name="sun.rmi.transport" level="DEBUG" />
+	<logger name="org.postgresql" level="DEBUG"/>
+
+	<root level="DEBUG">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="RollingFile"></appender-ref>
+	</root>
+
+</configuration>

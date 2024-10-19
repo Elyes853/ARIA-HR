@@ -1,0 +1,28 @@
+<p-card [style]="{'background-color': '#601919'}">
+        <h2>Remarques</h2>
+    <p>
+        1- Vous êtes actuellement en conversation avec ARIA, le RH virtuel. Cette conversation sera consultée par les administrateurs.
+    </p>
+    <p>
+        2- Il est important de rester dans cette fenêtre et de ne pas rafraîchir l'onglet. Si vous le faites, vous perdrez la session en cours.
+    </p>
+</p-card>
+
+<div >
+    <div class="py-4" *ngFor="let message of messages; let i = index">
+        <p-card [style]="{'width': '80%', 'margin-left': message.role === 'user' ? 'auto' : '0', 'margin-right': message.role === 'assistant' ? 'auto' : '0', 'background-color': message.role === 'user' ? '#141d34' : '#1f232f'}"  [id]="i === messages.length - 1 ? 'lastMessage' : ''">
+            <markdown class="m-0" [data]="message.content" >
+
+            </markdown>
+        </p-card>
+    </div>
+</div>
+<div >
+    <div class="py-4" [ngStyle]="{'height': '150px'}" >
+    </div>
+</div>
+
+
+<div class=" py-3 input-container flex justify-content-center" >
+    <textarea  rows="5" cols="150" pInputTextarea [autoResize]="true" style="max-height: 200px;" placeholder="Écrire votre message" (keyup.enter)="addMessage($event)"></textarea>
+</div>

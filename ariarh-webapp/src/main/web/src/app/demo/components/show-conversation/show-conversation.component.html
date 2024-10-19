@@ -1,0 +1,16 @@
+<div >
+    <div class="py-4" *ngFor="let message of messages; let i = index">
+        <p-card [style]="{'width': '80%', 'margin-left': message.role === 'user' ? 'auto' : '0', 'margin-right': message.role === 'assistant' ? 'auto' : '0', 'background-color': message.role === 'user' ? '#f8faff' : '#e9eeff'}" header="Message from {{message.role}}" [id]="i === messages.length - 1 ? 'lastMessage' : ''">
+            <markdown class="m-0" [data]="message.content" >
+
+            </markdown>
+        </p-card>
+    </div>
+</div>
+<div >
+    <div class="py-4" [ngStyle]="{'height': '150px'}" >
+    </div>
+</div>
+
+
+

@@ -1,0 +1,32 @@
+<div class="col-12">
+<p-toast></p-toast>
+
+    <div class="card px-6 py-6" flex flex-column>
+        <h5>Enoncé de la question</h5>
+<quill-editor id="question" [(ngModel)]="question.question" [styles]="{ height: '200px' }" [required]="true" [required]="true"> </quill-editor>
+
+
+        <div class="px-6 py-3 flex flex-column ">
+            <h5 >Choisir catégorie</h5>
+            <p-dropdown [options]="categoriesLabelsList" [(ngModel)]="chosenCategory" (onChange)="onItemChange($event)" [showClear]="true" placeholder="Choisir Catégorie"></p-dropdown>
+        </div>
+
+        <div class="px-6 py-4 flex justify-content" >
+            <input pInputText  type="text" [required]="true" [(ngModel)]="newCategory" (ngModelChange)="question.category_id=$event" *ngIf="isClicked" placeholder="Entrer ici...">
+        </div>
+
+        <div class="px-6 py-3 flex flex-column" >
+            <p-button label="Submit" (onClick)="saveQuestionAndCategory()" ></p-button>
+        </div>
+
+        <h5>{{chosenCategory}}</h5>
+
+
+
+    </div>
+
+</div>
+
+
+
+

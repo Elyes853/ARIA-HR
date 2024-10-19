@@ -1,0 +1,73 @@
+<h1 class="upload-title">Téléverser votre CV</h1>
+
+<div class="card-container">
+    <div class="offer-details">
+        <h2>Détails de l'offre</h2>
+        <div class="offer-info">
+            <p><strong>Titre de l'offre:</strong> {{ offer.title }}</p>
+            <p><strong>Description de l'offre:</strong> </p>
+            <div style="margin-bottom: 10px;" [innerHTML]="offer.description"> </div>
+
+            <p><strong>Responsabilités:</strong> </p>
+            <div style="margin-bottom: 10px;" [innerHTML]="offer.responsibilities"> </div>
+
+            <p><strong>Description de l'offre:</strong> </p>
+            <div style="margin-bottom: 10px;" [innerHTML]="offer.requiredSkills"> </div>
+
+            <p><strong>Expérience requise:</strong> {{ offer.experienceRequired }}</p>
+            <p><strong>Éducation requise:</strong> {{ offer.education }}</p>
+            <p><strong>Localisation:</strong> {{ offer.location }}</p>
+            <p><strong>Type de contrat:</strong> {{ offer.contractType }}</p>
+            <p><strong>Avantages:</strong> {{ offer.benefits }}</p>
+            <p><strong>Processus de candidature:</strong> {{ offer.applicationProcess }}</p>
+            <p><strong>Date limite de candidature:</strong> {{ offer.applicationDeadline }}</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+
+            <!--(sortFunction)="customSort($event)"-->
+            <p-table #dt   [customSort]="true" [value]="candidatesList" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','score']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedOffers" selectionMode="multiple" [rowHover]="true" dataKey="id"  [resizableColumns]="true" [autoLayout]="true">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">Liste des candidats</h5>
+                        <span class="block mt-2 md:mt-0 p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Search..."  class="w-full sm:w-auto"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th></th>
+                        <th pSortableColumn="name">Candidat <p-sortIcon field="name"></p-sortIcon></th>
+                        <th pSortableColumn="score" >Matching score <p-sortIcon  field="score"></p-sortIcon></th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-candidate>
+                    <tr>
+                        <td>
+                            <div class="flex">
+                                <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-info" (click)="viewCandidate(candidate)"></button>
+                            </div>
+                        </td>
+                        <td style="width:20%; min-width:10rem;"><span class="p-column-title">Code</span>{{candidate.name}}</td>
+                        <td style="width:70%; min-width:10rem;">
+                            <span class="p-column-title">Name</span>
+                            <div class="description p-ellipsis" style="width: 100%;" [innerHTML]="candidate.score"  >{{offer.description}}</div>
+                        </td>
+
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+</div>

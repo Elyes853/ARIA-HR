@@ -1,0 +1,76 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overridden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+#
+# ===================================================================
+
+server:
+  http2:
+    enabled: true
+  port: #application.port#
+  servlet:
+    context-path: #application.context-path#
+    
+
+spring: 
+  datasource:
+    initialization-mode: never
+  jmx:
+    enabled: false
+  mvc: 
+    favicon: 
+      enabled: false  
+  profiles: 
+    active: #spring.profiles.active#
+
+
+  mail:
+    host: smtp.gmail.com #email-smtp.eu-west-3.amazonaws.com
+    username: ${SMTP_USERNAME} #itpeac2018@gmail.com
+    password: ${SMTP_PWD} #itpeac$2018
+    port: 465
+    properties:
+      mail:
+        debug: true
+        smtp:
+          quitwait: false
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+          auth: true
+        starttls:
+          enable: false
+        ssl:
+          trust: true
+
+application:
+  projet:
+    application-name: #project.name#
+    application-version: #project.version#
+  cors: 
+    allowed-origins: "http://localhost:4200"
+    allowed-methods: "*"
+    allowed-headers: "*"
+    exposed-headers: "Authorization,Content-Disposition,X-validation-error"
+    allow-credentials: true
+    max-age: 1800
+    tmp-directory: /home/tmp/
+    data-in-directory: /home/data/in
+
+
+#AWS properties
+cloud.aws.stack.auto: false
+cloud :
+  s3:
+    bucket: s3-test-to-delete
+  aws:
+    region:
+      static: eu-west-3
+
+chatgpt:
+  model: gpt-4o
+  api:
+    url: https://api.openai.com/v1/chat/completions
+    key: sk-proj-lrVllXMOXrVHVOQ3YTkKT3BlbkFJx6Y8loXlVgooKfiCr3gC

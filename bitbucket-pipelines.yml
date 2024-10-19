@@ -1,0 +1,80 @@
+image: maven:3.8.6-jdk-11
+
+pipelines:
+  default:
+    - step:
+        name: Build
+        caches:
+          - maven
+        script: # Modify the commands below to build your repository.
+          #- apt-get update
+          - mvn -B clean install
+  branches:
+    feature/*:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - node
+          script: # Modify the commands below to build your repository.
+            #- apt-get update
+            #- mkdir -p dist/
+            - mvn -B clean install -P integ # -B batch mode makes Maven less verbose
+
+    development:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - node
+          script: # Modify the commands below to build your repository.
+            #- apt-get update
+            - mkdir -p dist/
+            - mvn -B clean install -P integ # -B batch mode makes Maven less verbose
+            - mv ariarh-distribution/target/ariarh-aws-zip.zip dist/ariarh-aws-zip.zip
+          artifacts:
+            - dist/**
+      - step:
+          name: Deploy To Integration Environment
+          deployment: Integration
+          script:
+            - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                APPLICATION_NAME: $APPLICATION_NAME
+                ENVIRONMENT_NAME: $APPLICATION_ENVIRONMENT
+                S3_BUCKET: $S3_BUCKET
+                ZIP_FILE: "dist/ariarh-aws-zip.zip"
+
+
+    release/*:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - node
+          script: # Modify the commands below to build your repository.
+            #- apt-get update
+            - mkdir -p dist/
+            - mvn -B clean install -P preprod # -B batch mode makes Maven less verbose
+            - mv ariarh-distribution/target/pressevent-aws-zip.zip dist/pressevent-aws-zip.zip
+          artifacts:
+            - dist/**
+
+    master:
+      - step:
+          name: Build
+          caches:
+            - maven
+            - node
+          script: # Modify the commands below to build your repository.
+            #- apt-get update
+            - mkdir -p dist/
+            - mvn -B clean install -P prod # -B batch mode makes Maven less verbose
+            - mv ariarh-distribution/target/ariarh-aws-zip.zip dist/ariarh-aws-zip.zip
+          artifacts:
+            - dist/**
+
+

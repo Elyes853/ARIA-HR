@@ -1,0 +1,41 @@
+
+logging:
+  config: classpath:logback.xml
+
+spring:
+  flyway:
+    ariarh:
+      enabled: false
+      url: ${DB_JDBC_URL}
+      user: ${DB_USER}
+      password: ${DB_PASSWORD}
+      locations: classpath:db/migration/db/postgres
+      schemas: admin
+      baseline-on-migrate: true
+  mvc: 
+    favicon: 
+      enabled: false  
+  h2: 
+    console:
+      enabled: false
+
+datasources: 
+  ariarh:
+    jdbcUrl: ${DB_JDBC_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+   
+
+application:
+  projet:
+    environnement: integration
+  data-in-directory: /usr/local/applications/ariarh/data/in
+
+  document:
+    separator: /
+  token:
+    validity: 32400000
+
+
+

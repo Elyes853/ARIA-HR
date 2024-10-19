@@ -1,0 +1,4 @@
+ALTER TABLE candidates
+
+ADD COLUMN Token TEXT,
+ADD COLUMN isOpen BOOLEAN;

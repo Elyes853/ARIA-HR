@@ -1,0 +1,57 @@
+
+
+<div *ngIf="user">
+    <p-toast [life]="60000"></p-toast>>
+    <h1>Bienvenue!</h1>
+    <div class="grid p-fluid">
+        <div class="col-12 md:col-6">
+
+            <div class="card">
+                <h5>Nom de candidat</h5>
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-8 lg:mb-0">
+					<span class="p-input-icon-left">
+						<i class="pi pi-user"></i>
+						<input type="text" pInputText  [(ngModel)]="usernameValue" required/>
+					</span>
+                    </div>
+                </div>
+
+                <h5>Adresse Email</h5>
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-8 lg:mb-0">
+					<span class="p-input-icon-left">
+						<i class="pi pi-at"></i>
+						<input type="text" pInputText  [(ngModel)]="emailValue" required/>
+					</span>
+                    </div>
+                </div>
+
+
+                <h5>Téléphone</h5>
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-8 lg:mb-0">
+					<span class="p-input-icon-left">
+						<i class="pi pi-phone"></i>
+						<input type="text" pInputText [(ngModel)]="phoneValue" required/>
+					</span>
+                    </div>
+                </div>
+
+                <h5>Adresse</h5>
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2 lg:col-8 lg:mb-0">
+					<span class="p-input-icon-left">
+						<i class="pi pi-map"></i>
+						<input type="text" pInputText  [(ngModel)]="locationValue" required/>
+					</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex">
+    <p-button [disabled]="isLoading" (onClick)="submit()">Submit</p-button>
+        <i *ngIf="isLoading" class="pi pi-spin pi-spinner" style="margin:15px;font-size: 2rem"></i>
+    </div>
+</div>

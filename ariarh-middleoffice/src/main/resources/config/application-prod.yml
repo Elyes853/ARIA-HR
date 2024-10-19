@@ -1,0 +1,60 @@
+
+logging:
+    config: classpath:logback.xml
+
+spring:
+  flyway:
+    ariarh:
+      enabled: false
+      url: ${DB_JDBC_URL}
+      user: ${DB_USER}
+      password: ${DB_PASSWORD}
+      locations: classpath:db/migration/db/postgres
+      schemas: admin
+      baseline-on-migrate: true
+  mvc: 
+    favicon: 
+      enabled: false  
+  h2: 
+    console:
+      enabled: false
+  mail:
+    host: ${SMTP_HOST}
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PWD}
+    port: 587
+    properties:
+      mail:
+        debug: true
+        smtp: 
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: true
+        starttls: 
+          enable: true
+        ssl: 
+          trust: true
+datasources: 
+  ariarh:
+    jdbcUrl: ${DB_JDBC_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+   
+
+application:
+  projet:
+    environnement: production
+  data-in-directory: /usr/local/applications/ariarh/data/in
+  email:
+    from: ${SMTP_USERNAME}
+    sender:  ${EMAIL_SENDER}
+  document:
+    separator: /
+  token:
+    validity: ${JWT_TOKEN_VALIDITY}
+
+
+
+
